@@ -1,11 +1,11 @@
 function updateTime() {
     var selectedCity = document.getElementById("citySelector").value;
     var options = { timeZone: selectedCity, timeStyle: 'full', timeZoneName: 'short' };
-    var formatter = new Intl.DateTimeFormat([], options);
-    var currentTime = new Date().toLocaleString([], options);
+    var formatter = new Intl.DateTimeFormat(undefined, options);
+    var currentTime = formatter.format(new Date());
 
-    document.getElementById("location").textContent = "Current Time in " + Intl.DateTimeFormat(undefined, { timeZoneName: 'long' }).formatToParts(currentTime).find(part => part.type === 'timeZoneName').value;
-    document.getElementById("time").textContent = formatter.format(currentTime);
+    document.getElementById("location").textContent = "Current Time in " + selectedCity;
+    document.getElementById("time").textContent = currentTime;
 }
 
 // Update time when the page loads
