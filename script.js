@@ -1,7 +1,12 @@
 function updateTime() {
     var selectedCity = document.getElementById("citySelector").value;
-    var options = { timeZone: selectedCity, timeStyle: 'full', timeZoneName: 'short' };
-    var formatter = new Intl.DateTimeFormat([], options);
+    var options = {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        timeZone: selectedCity
+    };
+    var formatter = new Intl.DateTimeFormat(undefined, options);
     var currentTime = formatter.format(new Date());
 
     document.getElementById("location").textContent = "Current Time in " + selectedCity;
