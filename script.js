@@ -8,5 +8,11 @@ function updateTime() {
     document.getElementById("time").textContent = formatter.format(currentTime);
 }
 
+// Update time when the page loads
 updateTime();
+
+// Update time when the dropdown selection changes
+document.getElementById("citySelector").addEventListener("change", updateTime);
+
+// Update time every second to keep it accurate
 setInterval(updateTime, 1000);
